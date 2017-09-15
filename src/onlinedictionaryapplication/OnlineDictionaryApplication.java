@@ -5,6 +5,14 @@
  */
 package onlinedictionaryapplication;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author yaffa
@@ -14,8 +22,34 @@ public class OnlineDictionaryApplication {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws Exception{
+        Map<String, String> dictionary = new HashMap<String, String>();
+        String word;
+        String meaning;
+        ServerSocket s = new ServerSocket(6789);
+
+        dictionary.put("dog", "type of animal");
+        dictionary.put("food","");dictionary.put("","");dictionary.put("","");
+        dictionary.put("","");dictionary.put("","");dictionary.put("","");
+        dictionary.put("","");dictionary.put("","");dictionary.put("","");
+        dictionary.put("","");dictionary.put("","");dictionary.put("","");
+        System.out.println(dictionary.get("dog"));
+        
+        while(true) {
+            Socket connectionSocket = s.accept();
+            BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
+            DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
+            word = inFromClient.readLine();
+            meaning = dictionary.get(word)  + '\n';
+            outToClient.writeBytes(meaning);
+        }
     }
     
 }
+//creat a simple dictionary
+//we need to cread a client who writes to the socket's buffer the word
+//the server reads the word from the socket and stores it in a String variable
+//this variable will be the key in the hashMap
+//use the hashMap.get(Key) to get the word's mean and strre it in a String variable
+//write the resulrs to the socket buffer
+//the client reads the buffer contentd and prints the results
