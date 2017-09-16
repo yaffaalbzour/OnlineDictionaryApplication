@@ -29,10 +29,10 @@ public class OnlineDictionaryApplication {
         ServerSocket s = new ServerSocket(6789);
 
         dictionary.put("dog", "type of animal");
-        dictionary.put("food","");dictionary.put("","");dictionary.put("","");
-        dictionary.put("","");dictionary.put("","");dictionary.put("","");
-        dictionary.put("","");dictionary.put("","");dictionary.put("","");
-        dictionary.put("","");dictionary.put("","");dictionary.put("","");
+        dictionary.put("trust","belief");dictionary.put("intelligent","clever");dictionary.put("rub","strok");
+        dictionary.put("feed","give food to");dictionary.put("strange","foreign");dictionary.put("dangerous","unsafe");
+        dictionary.put("land","ground");dictionary.put("adult","mature");dictionary.put("warning","caution");
+        dictionary.put("deaf","unable to hear");dictionary.put("direction","way");dictionary.put("bee","insrct");
         System.out.println(dictionary.get("dog"));
         
         while(true) {
